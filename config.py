@@ -1,0 +1,1 @@
+HOST = 'https://cpre2-api-stg.adidas.com.cn'
