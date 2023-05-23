@@ -1,16 +1,13 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+import pytest
+import os
+import shutil
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    if os.path.exists('report/'):
+        shutil.rmtree('report/')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # 执行pytest单元测试，生成 Allure 报告需要的数据存在 /tmp 目录
+    pytest.main(['./testcase/test_product.py', '-s', '--alluredir', './report/tmp'])
+    # 执行命令 allure generate ./report/tmp -o ./report --clean ，生成测试报告
+    os.system('allure generate  ./report/tmp -o ./report/report --clean')

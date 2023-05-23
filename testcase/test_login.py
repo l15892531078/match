@@ -7,8 +7,7 @@ from Lib.GetExcelData import getExcelData
 @allure.story('登录接口')
 @allure.title('登录接口用例')
 @allure.severity('critical')
-@pytest.mark.login(order = 1)
-@pytest.mark.parametrize('inData, respData', getExcelData(1, 1, 5, 6, 8))
+@pytest.mark.parametrize('inData, respData', getExcelData(0, 1, 2, 6, 8))
 def test_login(inData, respData):
     """
     登录操作
@@ -20,7 +19,7 @@ def test_login(inData, respData):
     resp_code = json.loads(resp)
     excel_code = json.loads(respData)
 
-    assert resp_code['retcode'] == excel_code['retcode']
+    assert resp_code['success'] == excel_code['success']
 
 
 if __name__ == '__main__':

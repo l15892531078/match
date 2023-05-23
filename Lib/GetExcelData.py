@@ -2,7 +2,7 @@ import xlrd
 
 
 def getExcelData(sheet_index, start, end, payload_col, expect_col):
-    file_path = '../data/松勤-教管系统接口测试用例-v1.4.xls'
+    file_path = './data/比赛测试用例.xls'
 
     work_book = xlrd.open_workbook(file_path)
 
@@ -13,7 +13,3 @@ def getExcelData(sheet_index, start, end, payload_col, expect_col):
         expect = sheet.cell_value(i, expect_col)
         dataList.append((payload, expect))
     return dataList
-
-
-if __name__ == '__main__':
-    getExcelData()
